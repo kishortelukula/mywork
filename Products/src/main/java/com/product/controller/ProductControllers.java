@@ -2,6 +2,7 @@ package com.product.controller;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -26,7 +27,8 @@ import com.product.service.ProductFileService;
 
 @RestController
 @RequestMapping("/product")
-@CrossOrigin("http://localhost:3000")
+@CrossOrigin("http://localhost:3000,http://10.0.2.15:3000/")
+
 public class ProductControllers {
 	
 	@Autowired
@@ -83,5 +85,12 @@ public class ProductControllers {
 	        List<AllProducts> allProducts = detailsService.getAllProducts();
 	        return new ResponseEntity<>(allProducts, HttpStatus.OK);
 	    }
+	 
+	 @GetMapping("/productbyId/{id}")
+	 public ResponseEntity<AllProducts>getProductById(@PathVariable int id){
+		 AllProducts optional=detailsService.getAllbyId(id);
+		 
+		 return new ResponseEntity<AllProducts>(optional, HttpStatus.OK);
+	 }
 	
 }

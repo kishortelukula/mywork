@@ -2,7 +2,14 @@ package com.product.service;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.net.URL;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Paths;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -41,6 +48,11 @@ public class ProductDetailsService {
         return productRepo.getProducts();
     }
 	
+	public AllProducts getAllbyId(int id) {
+		
+		return productRepo.getProductbyId(id);
+	}
+	
 	
 	public final String location = "C:\\React\\pract\\public\\SuppertedFiles";
 	
@@ -56,7 +68,7 @@ public class ProductDetailsService {
 			File F1 = new File(data);
 			file.transferTo(F1);
 			this.fileRepo.save(P1);
-			
+					
 			return "Succesfull";
 			
 		}else {
