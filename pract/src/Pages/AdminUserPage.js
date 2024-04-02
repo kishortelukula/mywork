@@ -1,16 +1,17 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import{faHeading,faClose,faRupeeSign,faAudioDescription,faSquarePlus,faUpload,faInfo, faPlusCircle}from '@fortawesome/free-solid-svg-icons'
+import{faHeading,faClose,faRupeeSign,faAudioDescription,faSquarePlus,faUpload,faInfo, faPlusCircle, faHeart}from '@fortawesome/free-solid-svg-icons'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
 import './Pages.css'
 import './AdminStyle.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
-// import 'bootstrap/dist/js/bootstrap.min.js'
+import 'bootstrap/dist/js/bootstrap.min.js'
+import { Link } from 'react-router-dom';
 
 import React, { useEffect, useState } from 'react'
 function AdminUserPage(){
-    var myModalElement  = document.getElementById('exampleModal');
+    
         const[alldata,setalldata]=useState([])
     useEffect(()=>{
       LoadeData()
@@ -61,7 +62,20 @@ if(InsertedData.data !==""){
     }})
     console.log("Uploded :",ImageUploade)
 }
-        toast.success("data inserted with Id:",InsertedData.data);
+        toast.success("data inserted with Id:",InsertedData.data.data);
+        LoadeData();
+        var myModalElement  = document.getElementById('exampleModal');
+        var modelElements = document.getElementsByClassName('modal-backdrop');
+    
+      // Iterate over each element in the collection
+      for (var i = 0; i < modelElements.length; i++) {
+          var modelElement = modelElements[i];
+          modelElement.classList.remove('modal-backdrop', 'fade','show');
+         
+      }
+        
+      myModalElement.style.display='none';
+      ProductData={};
     } catch (error) {
         
     }
@@ -71,12 +85,8 @@ if(InsertedData.data !==""){
 else{
 
     toast.error("Please Enter All Details");
-    // myModalElement.style.display='none';
-    const backdropElement = document.querySelector('.modal-backdrop');
-    if (backdropElement) {
-        // backdropElement.classList.remove('modal-open','modal-backdrop', 'fade', 'show');
-        backdropElement.classList.add('hide')
-    }
+    
+   
    
 }
 
@@ -168,10 +178,12 @@ alldata.map((dataList,index)=>(
    </div>
    <h1 className='Product-h1'> {dataList.productName}</h1>
    <p>{dataList.productTitle}</p>
-     <h5 className='Product-Price'><FontAwesomeIcon icon={faRupeeSign}/>{dataList.productPrice} </h5>
+     <h5 className='Product-Price'><FontAwesomeIcon icon={faRupeeSign}/>:{dataList.productPrice} </h5>
      <div className="button-wrapper"> 
-  <button className="btn outline btn-outline-secondary">DETAILS</button>
-    <button className="btn fill btn-outline-secondary">BUY NOW</button>
+
+  <Link className="btn outline btn-outline-secondary" to={`/Product/${dataList.productId}`}>DETAILS</Link>
+    <Link className="btn fill btn-outline-secondary">BUY NOW</Link>
+    <button className='btn wish '><FontAwesomeIcon icon={faHeart} style={{color: "snow"}} size='2x' /></button>
   </div>
   </div>
   

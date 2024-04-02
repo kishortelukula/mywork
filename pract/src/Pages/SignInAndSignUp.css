@@ -1,0 +1,266 @@
+*{
+    margin: 0px;
+    padding: 0px;;
+  }
+  
+  body{
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  
+  .sinContainer
+  {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    background-color: red;
+    background: linear-gradient(to bottom, rgb(6, 108, 100),  rgb(14, 48, 122));
+    width: 800px;
+    height: auto;
+    margin: 10% auto;
+    border-radius: 5px;
+  }
+  
+  .content-holder
+  {
+    text-align: center;
+    color: white;
+    font-size: 14px;
+    font-weight: lighter;
+    letter-spacing: 2px;
+    margin-top: 15%;
+    padding: 50px;
+  }
+  
+  .content-holder h2
+  {
+    font-size: 34px;
+    margin: 20px auto;
+  }
+  
+  .content-holder p
+  {
+    margin: 30px auto;
+  }
+  
+  .content-holder button
+  {
+    border:none;
+    font-size: 15px;
+    padding: 10px;
+    border-radius: 6px;
+    background-color: white;
+    width: 150px;
+    margin: 20px auto;
+  }
+  
+  
+  .box-2{
+    background-color: white;
+  
+    margin: 5px;
+  }
+  
+  .login-form-container
+  {
+    text-align: center;
+    margin-top: 10%;
+  
+  }
+  
+  .login-form-container h1
+  {
+    color: black;
+    font-size: 24px;
+    padding: 20px;
+  }
+  
+  .input-field
+  {
+    box-sizing: border-box;
+    font-size: 14px;
+    padding: 10px;
+    border-radius: 7px;
+    border: 1px solid rgb(168, 168, 168);
+    width: 232px;
+    outline: none;
+    margin: 0px 16px;
+  }
+  
+  .login-button{
+    box-sizing: border-box;
+    color: white;
+    font-size: 14px;
+    padding: 13px;
+    border-radius: 7px;
+    border: none;
+    width: 250px;
+    outline: none;
+    background-color: rgb(56, 102, 189);
+  }
+  
+  
+  
+  .button-2
+  {
+    display: none;
+  }
+  
+  
+  
+  
+  
+  .signup-form-container
+  {
+    position: relative;
+    top: 57%;
+    left: 50%;
+    transform: translate(-50%,-60%);
+    text-align: center;
+    display: none;
+  }
+  
+  
+  .signup-form-container h1
+  {
+    color: black;
+    font-size: 24px;
+    padding: 20px;
+  }
+  
+  .signup-button{
+    box-sizing: border-box;
+    color: white;
+    font-size: 14px;
+    padding: 13px;
+    border-radius: 7px;
+    border: none;
+    width: 250px;
+    outline: none;
+    background-color: rgb(56, 189, 149);  
+  }
+  .LocationIcon{
+    border: none;
+    border-radius:20%;
+  }
+  .LocationIcon:hover{
+    transform: scale(1.125);
+    /* color: rgba(255, 255, 255, 0.9);
+    border-color: rgba(255, 255, 255, 0.9); */
+    transition: all .3s ease;  
+  
+  }
+ .pincodeSearch {   
+    display: none;
+    width: 35%;
+    float: right;
+    border-radius: 7px;
+    box-sizing: border-box;
+    outline: none;
+    padding: 1px;
+    font-size: medium;
+}
+
+/* **************************** */
+
+
+.switch-holder {
+  display: contents;
+  padding: 10px 20px;
+  border-radius: 10px;
+  box-shadow: -8px -8px 15px rgba(255, 255, 255, .7),
+        10px 10px 10px rgba(0, 0, 0, .2),
+        inset 8px 8px 15px rgba(255, 255, 255, .7),
+        inset 10px 10px 10px rgba(0, 0, 0, .2);
+  justify-content: space-between;
+  align-items: center;
+}
+
+.switch-label {
+  padding: 0 20px 0 10px
+}
+
+.switch-label i {
+  margin-right: 5px;
+}
+
+.switch-toggle {
+  height: 40px;
+}
+
+.switch-toggle input[type="checkbox"] {
+  position: absolute;
+  opacity: 0;
+  z-index: -2;
+}
+
+.switch-toggle input[type="checkbox"]+label {
+  position: relative;
+  display: inline-block;
+  width: 100px;
+  height: 40px;
+  border-radius: 20px;
+  margin: 0;
+  cursor: pointer;
+  box-shadow: inset -8px -8px 15px rgba(255, 255, 255, .6),
+        inset 10px 10px 10px rgba(0, 0, 0, .25);
+}
+
+.switch-toggle input[type="checkbox"]+label::before {
+  position: absolute;
+  content: 'NO';
+  font-size: 13px;
+  text-align: center;
+  line-height: 25px;
+  top: 8px;
+  left: 8px;
+  width: 45px;
+  height: 25px;
+  border-radius: 20px;
+  background-color: #eeeeee;
+  box-shadow: -3px -3px 5px rgba(255, 255, 255, .5),
+        3px 3px 5px rgba(0, 0, 0, .25);
+  transition: .3s ease-in-out;
+}
+
+.switch-toggle input[type="checkbox"]:checked+label::before {
+  left: 50%;
+  content: 'YES';
+  color: #fff;
+  background-color: #00b33c;
+  box-shadow: -3px -3px 5px rgba(255, 255, 255, .5),
+        3px 3px 5px #00b33c;
+}
+.input-lable{}
+
+/* ************************* */
+/* 
+ul.helper-text {
+  display: block;
+  margin-top: 6px;
+  font-size: 12px;
+  line-height: 22px;
+  color:red;
+  
+  li.valid {
+    color: blue;
+  }
+}
+
+&.valid {
+  input { border: 2px solid blue; }
+} */
+
+ul.helper-text {
+  display: ruby-text;
+  /* margin-top: 6px; */
+  font-size: 12px;
+  line-height: 22px;
+  color: red;
+}
+
+ul.helper-text li.valid {
+  color: blue;
+}
+
+.valid input {
+  border: 2px solid blue;
+}
