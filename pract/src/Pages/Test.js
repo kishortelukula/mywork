@@ -31,6 +31,8 @@ function Test() {
 
         return (
             <>
+           
+            
                 <input
                     type="password"
                     placeholder="Password"
@@ -47,6 +49,7 @@ function Test() {
                     <li className={validations.number ? "valid" : ""}>Must contain a number.</li>
                 </ul>
             </>
+            
         );
     }
 

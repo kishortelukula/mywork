@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import{faHeading,faClose,faRupeeSign,faAudioDescription,faSquarePlus,faUpload,faInfo, faPlusCircle, faHeart}from '@fortawesome/free-solid-svg-icons'
+import{faHeading,faClose,faRupeeSign,faAudioDescription,faSquarePlus,faUpload,faInfo, faPlusCircle, faHeart, faSignOut}from '@fortawesome/free-solid-svg-icons'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
@@ -7,14 +7,22 @@ import './Pages.css'
 import './AdminStyle.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap/dist/js/bootstrap.min.js'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 import React, { useEffect, useState } from 'react'
 function AdminUserPage(){
-    
+    const nav=useNavigate();
         const[alldata,setalldata]=useState([])
     useEffect(()=>{
-      LoadeData()
+        let sectionstore=localStorage.getItem("User Name");
+        if(sectionstore ==="" || sectionstore === null){
+            nav("/")
+        }
+        else{
+
+LoadeData()
+        }
+      
     },[]);
     
      const LoadeData=async ()=>{
@@ -93,13 +101,26 @@ else{
 
 }
 
+const signOut=()=>{
+    localStorage.clear();
+    nav("/")
+}
+
 
     return(
         <>
+       
+        <div className='row'>
         <button type="button" className="Add_Product_BTN" data-bs-toggle="modal" data-bs-target="#exampleModal">
                                 <span className="button__text">Add Product</span>
                                 <FontAwesomeIcon icon={faPlusCircle} className="button__icon"/>
         </button>
+
+        <button type="button" className="LogOut_BTN" onClick={signOut}>
+                                <span className="button__text">Log out</span>
+                                <FontAwesomeIcon icon={faSignOut} className="button__icon"/>
+        </button>
+        </div>
          
               
         <><div className="container">

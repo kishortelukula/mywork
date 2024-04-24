@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import './AdminStyle.css'
+// import './AdminStyle.css'
+import './Pages.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import{faRupeeSign}from '@fortawesome/free-solid-svg-icons'
 import axios from 'axios';

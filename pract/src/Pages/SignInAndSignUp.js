@@ -8,11 +8,19 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faStreetView} from "@fortawesome/free-solid-svg-icons";
 import 'tooltippy/dist/tooltippy--translucid.min.css'
 import axios from "axios";
+import ClipLoader from "react-spinners/ClipLoader";
+import { useNavigate } from "react-router-dom";
 
 
 
 
 function SignInAndSignUp(){
+
+	
+
+	let [loading, setLoading] = useState();
+	const nav=useNavigate();
+
 		function signup()
 	{
 		document.querySelector(".login-form-container").style.cssText = "display: none;";
@@ -56,6 +64,7 @@ if(pinCode.length !==0){
 			elements[i].textContent = '';
 		}
 		try {
+			
 			const FullAddress= await axios.get(`https://api.postalpincode.in/pincode/${pinCode}`);
 			console.log("Full data",FullAddress);
 			if(FullAddress.data[0].PostOffice.length !==0){
@@ -63,17 +72,19 @@ if(pinCode.length !==0){
 				document.querySelector("#State").value=FullAddress.data[0].PostOffice[0].State;
 				document.querySelector("#District").value=FullAddress.data[0].PostOffice[0].District;
 				document.querySelector("#City").value=FullAddress.data[0].PostOffice[0].Name;
-		
+			
 				}
 
 		} catch (error) {
 			console.log("Error :",error)
+			
 		}
 				
 		
 		
     } else {
         console.log("Invalid PIN Code");
+		
         // Assign the validation message if the PIN code is invalid
 		for (let i = 0; i < elements.length; i++) {
 			elements[i].textContent = "Please Enter Valid PIN Code";
@@ -142,10 +153,16 @@ if(returnData.data =="Existed"){
 
 }
 else if(returnData.data =="Inserted"){
+	
 	toast.success("User added sucessfully")
+	var clearBtn=document.getElementById("btnReset");
+	clearBtn.click();
+	login();
+	
 
 }
 else{
+	
 	toast.error("please try again")
 }
 
@@ -153,16 +170,50 @@ else{
 		
 	}
 	else{
+		
 toast.error("Please enter all data");
-// login();
+// 
 	}
 	
+}
+
+const loginAccess =async ()=>{
+
+var userName=document.getElementById("Username").value;
+var password=document.getElementById("Password").value;
+	
+var logInCredentials={
+	"userName":userName,
+	"password" :password
+}
+try {
+	const getAccess= await axios.post("http://localhost:8080/product/Login", logInCredentials);
+	const {data}=getAccess;
+	if(getAccess.data=="logIn Successfull"){
+		localStorage.setItem("User Name",logInCredentials.userName)
+nav("/Products")
+	}
+	else{
+		toast.info(getAccess.data)
+	}
+	
+} catch (error) {
+	console.log("error  :",error);
+}
+
+
+
+
+
 }
 	
 
 return(
+
+	
 <div className="sinContainer">
 	{/* <!--Data or Content--> */}
+	
 	<div className="box-1">
 		<div className="content-holder">
 			<h2>Hello!</h2>
@@ -171,18 +222,20 @@ return(
 			<button className="button-2" onClick={login}>Login</button>
 		</div>
 	</div>
-
+	
 	
 	{/* <!--Forms--> */}
 	<div className="box-2">
 		<div className="login-form-container">
 			<h1>Login Form</h1>
-			<input type="text" placeholder="Username" className="input-field"/>
+			<form>
+			<input type="text" placeholder="Username" id="Username" className="input-field"/>
 			<br/><br/>
-			<input type="password" placeholder="Password" className="input-field"/>
+			<input type="password" placeholder="Password" id="Password" className="input-field"/>
 			<br/><br/>
-			<button className="login-button" type="button">Login</button>
+			<button className="login-button" type="button" onClick={loginAccess}>Login</button>
 			<a href="">Forgot Password</a>
+			</form>
 		</div>
 	
 
@@ -193,7 +246,7 @@ return(
 		
 		</span></h1><span>  <p className ="postValidationP" style={{color:"red"}}></p></span>
 		
-
+<form>
 	
 		
 		<div className="row">
@@ -235,9 +288,13 @@ return(
 		
 		</div><br />
 		
-		
-		
+		<div className="row">
 		<button className="signup-button" type="button" onClick={AddUser}>Sign Up</button>
+		<button type="reset" id="btnReset" className="clear-button">Clear</button>
+		</div>
+		
+		
+		</form>
 	</div>
 
 </div>
