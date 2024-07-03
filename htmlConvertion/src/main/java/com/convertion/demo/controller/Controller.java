@@ -1,0 +1,24 @@
+package com.convertion.demo.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.convertion.demo.Service.ConvertionService;
+
+@RestController
+public class Controller {
+	
+	
+	@Autowired
+	ConvertionService convertionService;
+
+	
+	@PostMapping("/pdf")
+	public String convertintopdf(@RequestBody String htmldata) {
+					
+		return convertionService.htmltopdfConvertion(htmldata);
+	}
+	
+}
