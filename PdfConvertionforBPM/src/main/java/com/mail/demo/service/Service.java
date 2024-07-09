@@ -15,29 +15,22 @@ public class Service {
 	
 	public String convertHTMLToPDF(String htmlData) {
 		Random random = new Random();
-		 int randomNumber = random.nextInt(81) + 20;
+		int randomNumber = random.nextInt(81) + 20;
 		String outputpath="C:\\micro services\\PdfConvertionforBPM\\src\\main\\resources\\templates\\"+randomNumber+".pdf";
 		
 		try {
 			ByteArrayOutputStream byteArrayOutputStream=new ByteArrayOutputStream();
-			PdfWriter pdfWriter= new PdfWriter(byteArrayOutputStream);
-			 
-
-		        // Generate a random integer between 20 and 100 (inclusive)
-		       
-		        
+			PdfWriter pdfWriter= new PdfWriter(byteArrayOutputStream);   		   
 			FileOutputStream fileOutputStream= new FileOutputStream(outputpath);
 			HtmlConverter.convertToPdf(htmlData, pdfWriter);
 			byteArrayOutputStream.writeTo(fileOutputStream);
-					byteArrayOutputStream.close();
+			byteArrayOutputStream.close();
 			fileOutputStream.close();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
-		
-		
+	
 		return outputpath;
 	}
 
