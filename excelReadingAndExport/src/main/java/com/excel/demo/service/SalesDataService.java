@@ -31,7 +31,6 @@ public class SalesDataService {
 
 	public void readAndStoreData(MultipartFile file) {
 		List<List<String>> rowList = new ArrayList<>();
-
 		try (Workbook workbook = WorkbookFactory.create(file.getInputStream())) {
 			Sheet sheet = workbook.getSheetAt(1); // Assuming you are reading the first sheet (index 0)
 

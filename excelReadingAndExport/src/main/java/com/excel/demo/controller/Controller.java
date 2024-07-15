@@ -24,7 +24,6 @@ public class Controller {
 	@PostMapping("/Upload")
 	public ResponseEntity<List<List<String>>> upload(@RequestParam("file") MultipartFile file) {
 		dataService.readAndStoreData(file);
-
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
 	
@@ -33,7 +32,6 @@ public class Controller {
 		response.setContentType("application/octet-stream");
 		String key="Content-Disposition";
 		String value="attachment;filename=Sales_data.xlsx";
-		
 		response.setHeader(key,value);
 		dataService.getExcel(response);
 		
