@@ -11,5 +11,6 @@ public interface FeignClient {
 	
 	@GetMapping("/all")
 	public List<UserData> datas();
+	
 
 }
