@@ -1,0 +1,28 @@
+/* Adjust the width of the table container and handle overflow */
+.tableContainer {
+        border: 1px solid black;
+    border-radius: 10px;
+    
+}
+
+.auditTabs{
+    display: block;
+    background-color: whitesmoke;
+    margin: 15px;
+    padding: 5px;
+    border: 1px solid black;
+    border-radius: 10px;
+    width: auto;
+    overflow-x: auto;
+}
+
+/* Set minimum width of the table */
+.table {
+    min-width: 700px; /* Add 'px' unit */
+}
+
+/* Style for header cells */
+.headerCell {
+    font-weight: bold; /* Remove quotes */
+    background-color: gray; /* No quotes needed */
+}

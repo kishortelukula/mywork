@@ -1,0 +1,26 @@
+
+.HeaderPanel{
+    display: block;
+    background-color: whitesmoke;
+    margin: 15px;
+    padding: 5px;
+    border: 1px solid black;
+    border-radius: 10px;
+    height: 85px;
+}
+.HeaderName{
+    color: orangered;
+    text-transform: uppercase;
+}
+.HeaderName h3{
+    padding: 0px;
+    margin: 0px;
+}
+.MuiGrid-item h5{
+    text-align: left;
+    padding: 20px;
+    text-transform: capitalize;
+}
+.MuiGrid-item h5 span{
+    color: chocolate;
+}

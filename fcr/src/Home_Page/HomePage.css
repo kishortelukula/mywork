@@ -1,0 +1,37 @@
+.LableName{ display:"inline"}
+.CaseCreationModelSection{
+    position: 'absolute';
+    top : '50%';
+    left: '50%';
+    transform: 'translate(-50%, -50%)';
+    width: 400;
+    background-color: 'background.paper';
+    border: '2px solid #000';
+    box-shadow: 24;
+   
+
+}
+
+
+.custom-header-class {
+    background-color: #f19946; /* Example background color */
+    color: #f3f2ee; /* Example text color */
+    font-weight: bold; /* Example font weight */
+    text-align: center;
+  }
+  .data-grid-container {
+    height: auto;
+    width: auto;
+    margin: 20px;
+    padding: 10px;
+    overflow: hidden;
+  }
+  
+  .custom-data-grid .MuiDataGrid-colCell {
+    width: auto !important; /* Override default column width */
+    white-space: nowrap; /* Prevent text wrapping */
+    overflow: hidden; /* Hide overflow content */
+    text-overflow: ellipsis; /* Add ellipsis for overflow text */
+  }
+ 
+  
